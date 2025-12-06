@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TextGen — Generator Teks Keren: Bold, Italic, Aesthetic, Bio & More</title>
+
+  <!-- SEO meta -->
+  <meta name="description" content="TextGen: generator teks online untuk membuat bold, italic, aesthetic, fancy, nama game keren, dan bio IG. Cepat, ringan, siap pasang AdSense.">
+  <meta name="keywords" content="generator teks, teks aesthetic, bold italic, bio IG, nama FF keren, fancy text">
+  <meta name="author" content="TextGen by You">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="TextGen — Generator Teks Keren">
+  <meta property="og:description" content="Buat teks aesthetic, bold, italic, dan nama game keren. Siap dipasang AdSense.">
+  <meta property="og:type" content="website">
+
+  <!-- Schema JSON-LD (Organization + WebSite + WebPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "TextGen",
+        "url": "https://yourdomain.example/",
+        "logo": "https://yourdomain.example/logo.png"
+      },
+      {
+        "@type": "WebSite",
+        "name": "TextGen",
+        "url": "https://yourdomain.example/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://yourdomain.example/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --text:#e6eef8; --muted:#99a3b3; --accent:#06b6d4;
+      --light-bg:#f7fafc; --light-card:#ffffff; --light-text:#0b1220;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;}
+    body{background:linear-gradient(180deg,#f5f7fb 0%,#ffffff 100%);color:var(--light-text);padding:18px}
+
+    /* layout */
+    .wrap{max-width:960px;margin:12px auto}
+    header{display:flex;align-items:center;gap:12px}
+    .brand{font-weight:700;font-size:20px}
+    .top-actions{margin-left:auto;display:flex;gap:8px}
+
+    /* card */
+    .card{background:var(--light-card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,0.06);}
+    .controls{display:grid;grid-template-columns:1fr 160px;gap:12px;margin-top:12px}
+    textarea{width:100%;min-height:130px;padding:12px;border-radius:8px;border:1px solid #e6edf3;font-size:16px}
+    select, button{padding:10px;border-radius:8px;border:1px solid #d6dfe8;background:white;font-size:15px}
+
+    .result{margin-top:14px;padding:14px;border-radius:8px;background:#f1f7ff;min-height:64px;font-size:22px;white-space:pre-wrap}
+    .grid-tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+    .tool{padding:12px;border-radius:10px;border:1px solid #eef4fb;background:#fff}
+
+    .small{font-size:13px;color:#475569}
+    .muted{color:#64748b}
+    .copy-btn{background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white;border:none}
+
+    /* nav pages (hash routing) */
+    nav{display:flex;gap:8px;margin-top:16px}
+    nav a{padding:8px 12px;border-radius:8px;background:#eef2ff;color:#3730a3;text-decoration:none}
+
+    /* responsive */
+    @media (max-width:640px){.controls{grid-template-columns:1fr}header{flex-direction:column;align-items:flex-start}.top-actions{margin-left:0}}
+
+    /* dark mode toggle */
+    .dark{background:var(--bg);color:var(--text)}
+    .dark .card{background:var(--card)}
+    .dark textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+    .dark .result{background:rgba(255,255,255,0.03)}
+
+    /* tiny helpers */
+    .kbd{display:inline-block;padding:4px 8px;border-radius:6px;background:#0f1724;color:#fff;font-size:12px}
+  </style>
+</head>
+<body>
+  <div class="wrap card" id="app">
+    <header>
+      <div class="logo">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%2306b6d4'/%3E%3Ctext x='12' y='16' font-size='10' font-family='Arial' fill='white' text-anchor='middle'%3ETG%3C/text%3E%3C/svg%3E" alt="logo" style="vertical-align:middle;border-radius:6px">
+      </div>
+      <div class="brand">TextGen</div>
+
+      <div class="top-actions">
+        <button id="toggleTheme" class="small">Dark</button>
+        <a id="deployBtn" class="small" href="#seo">Panduan SEO</a>
+      </div>
+    </header>
+
+    <nav style="margin-top:12px">
+      <a href="#/home">Generator</a>
+      <a href="#/tools">Multi Tools</a>
+      <a href="#/seo">SEO & Article</a>
+      <a href="#/privacy">Privacy Policy</a>
+      <a href="#/about">About</a>
+    </nav>
+
+    <main style="margin-top:14px">
+
+      <!-- HOME (Generator single) -->
+      <section id="home" class="page">
+        <div class="card">
+          <h2>Buat teks aesthetic & fancy</h2>
+          <p class="small">Pilih style, ketik, copy. Gratis & cepat. Siap ditempel AdSense di bawah.</p>
+
+          <div class="controls">
+            <div>
+              <textarea id="input" placeholder="Ketik di sini...">Contoh: TextGen keren!</textarea>
+              <div style="margin-top:8px;display:flex;gap:8px">
+                <input id="searchKeywords" type="text" placeholder="Cari style atau keyword" style="flex:1;padding:8px;border-radius:8px;border:1px solid #e6edf3">
+                <button id="clearBtn">Clear</button>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <select id="styleSelect" size="6">
+                <option value="bolditalic">Bold + Italic</option>
+                <option value="bold">Bold</option>
+                <option value="italic">Italic</option>
+                <option value="double">Double-struck</option>
+                <option value="script">Script</option>
+                <option value="fraktur">Fraktur</option>
+                <option value="smallcaps">Small Caps</option>
+                <option value="aesthetic1">Aesthetic ①</option>
+                <option value="aesthetic2">Aesthetic ②</option>
+                <option value="reverse">Reverse (mirrored)</option>
+              </select>
+
+              <button id="copyBtn" class="copy-btn">Copy Hasil</button>
+              <button id="downloadBtn">Download .txt</button>
+              <div class="small muted">Terapkan di Bio IG, Nama Game, Caption TikTok</div>
+            </div>
+          </div>
+
+          <div class="result" id="output">Hasil akan muncul di sini...</div>
+
+          <!-- ADS PLACEHOLDER -->
+          <!-- === TEMPAT IKLAN: tempelkan kode AdSense kamu di bawah ini === -->
+          <!-- Contoh: paste <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+               lalu <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXX" data-ad-slot="YYYYY"></ins>
+          -->
+
+        </div>
+      </section>
+
+      <!-- MULTI TOOLS - many small generators -->
+      <section id="tools" class="page" style="display:none">
+        <div class="grid-tools">
+
+          <div class="tool">
+            <h3>Nama FF / Nickname</h3>
+            <p class="small muted">Buat kombinasi simbol + nama</p>
+            <input id="nickInput" placeholder="Nama kamu" style="width:100%;padding:8px;border-radius:6px;border:1px solid #e6edf3">
+            <button style="margin-top:8px" id="nickGen">Generate</button>
+            <div id="nickOut" style="margin-top:8px;font-weight:600"></div>
+          </div>
+
+          <div class="tool">
+            <h3>Bio IG Maker</h3>
+            <p class="small muted">Contoh kalimat bio singkat</p>
+            <select id="bioTone" style="width:100%;margin-top:8px">
+              <option>Casual</option>
+              <option>Professional</option>
+              <option>Aesthetic</option>
+            </select>
+            <button id="bioGen" style="margin-top:8px">Buat Bio</button>
+            <div id="bioOut" style="margin-top:8px"></div>
+          </div>
+
+          <div class="tool">
+            <h3>Emoji Combiner</h3>
+            <input id="emojiInp" placeholder="masukkan emoji atau kata" style="width:100%;padding:8px;border-radius:6px;border:1px solid #e6edf3">
+            <button id="emojiBtn" style="margin-top:8px">Gabungkan</button>
+            <div id="emojiOut" style="margin-top:8px"></div>
+          </div>
+
+          <div class="tool">
+            <h3>Symbol Spacer</h3>
+            <p class="small muted">Tambahkan spasi simbol antar huruf</p>
+            <input id="spacerInp" placeholder="text contoh" style="width:100%;padding:8px;border-radius:6px;border:1px solid #e6edf3">
+            <button id="spacerBtn" style="margin-top:8px">Apply</button>
+            <div id="spacerOut" style="margin-top:8px"></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SEO ARTICLE (800-1000 words) -->
+      <section id="seoPage" class="page" style="display:none">
+        <div class="card">
+          <h2>Artikel: Cara Membuat Teks Aesthetic & Menghasilkan Uang dari Website Generator</h2>
+          <p class="muted">Artikel ini dibuat untuk membantu SEO dan mempercepat approval AdSense. Copy & paste ke halaman blog jika perlu.</p>
+          <article id="seoArticle">
+            <h3>Kenapa Website Generator Teks Populer?</h3>
+            <p>Website yang bisa mengubah teks menjadi font unik, seperti bold, italic, atau variasi penuh simbol, sangat populer karena kemudahan penggunaannya. Pengguna—terutama remaja dan pembuat konten—sering mencari cara cepat untuk membuat bio Instagram menarik, nama game keren, atau caption unik. Dengan trafik yang konsisten, menempatkan iklan seperti Google AdSense dapat menghasilkan pendapatan pasif.</p>
+
+            <h3>Strategi SEO & Monetisasi</h3>
+            <p>Fokus pada kata kunci long-tail: "generator teks bold italic", "bio IG aesthetic generator", "nama FF keren generator". Buat halaman bantuan, FAQ, dan privacy policy untuk meningkatkan kredibilitas. Tambahkan schema markup dan meta tag yang relevan. Promosikan konten lewat short video (TikTok/YouTube Shorts) untuk menarik pengunjung cepat.
+            </p>
+
+            <h3>Perhatian & Kebijakan</h3>
+            <p>Sebelum mendaftar AdSense, pastikan situs memiliki privacy policy, about page, dan tidak melanggar kebijakan (konten dewasa, hak cipta, dll). Buat pengalaman pengguna sederhana dan cepat—publisher biasanya menyukai halaman yang ringan dan aman.</p>
+
+            <h3>Langkah Teknis Singkat</h3>
+            <ol>
+              <li>Siapkan domain atau gunakan GitHub Pages untuk mulai.</li>
+              <li>Deploy, lalu tambahkan halaman privacy dan about.</li>
+              <li>Daftar AdSense dan pasang kode iklan di posisi yang wajar (header atau di antara konten generator).</li>
+              <li>Promosikan di media sosial dan perbaiki SEO on-page.</li>
+            </ol>
+
+            <h3>Kesimpulan</h3>
+            <p>Dengan kombinasi produk sederhana (generator) + SEO + promosi singkat, website ini dapat menghasilkan pendapatan. Kuncinya adalah kontinuitas traffic dan kepatuhan terhadap kebijakan iklan.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- PRIVACY -->
+      <section id="privacy" class="page" style="display:none">
+        <div class="card">
+          <h2>Privacy Policy (Singkat)</h2>
+          <p class="small muted">Gunakan halaman ini untuk pendaftaran AdSense — ubah nama domain & kontak sebelum publish.</p>
+          <p>TextGen menghormati privasi pengunjung. Kami mungkin menempatkan cookie iklan dan analitik. Data yang dikumpulkan bersifat anonym dan digunakan untuk meningkatkan layanan. Untuk permintaan penghapusan data, hubungi: <a href="mailto:you@yourdomain.example">you@yourdomain.example</a>.</p>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="page" style="display:none">
+        <div class="card">
+          <h2>Tentang TextGen</h2>
+          <p class="muted">TextGen dibuat untuk membantu pembuat konten & game players membuat teks unik tanpa aplikasi.</p>
+          <p>Kontak: <a href="mailto:you@yourdomain.example">you@yourdomain.example</a></p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer style="margin-top:14px;text-align:center;color:#475569;font-size:13px">
+      © <span id="year"></span> TextGen — Dibuat cepat untuk monetisasi.
+    </footer>
+  </div>
+
+  <script>
+    // ---------- Utilities & Data ----------
+    const styles = {
+      bolditalic: "𝙖𝙗𝙘𝙙𝙚𝙛𝙜𝙝𝙞𝙟𝙠𝙡𝙢𝙣𝙤𝙥𝙦𝙧𝙨𝙩𝙪𝙫𝙬𝙭𝙮𝙯",
+      bold:       "𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳",
+      italic:     "𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧",
+      double:     "𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫",
+      script:     "𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃",
+      fraktur:    "𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷",
+      smallcaps:  "ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢ",
+      aesthetic1: "𝓪𝓮𝓼𝓽𝓱𝓮𝓽𝓲𝓬",
+      aesthetic2: "𝔞𝔢𝔰𝔱𝔥𝔢𝔱𝔦𝔠",
+      reverse:    null
+    };
+    const abc = "abcdefghijklmnopqrstuvwxyz";
+
+    // ---------- Routing (simple hash) ----------
+    function showPage(name){
+      document.querySelectorAll('.page').forEach(p=>p.style.display='none');
+      if(name === 'home'){document.getElementById('home').style.display='block';}
+      if(name === 'tools'){document.getElementById('tools').style.display='block';}
+      if(name === 'seo'){document.getElementById('seoPage').style.display='block';}
+      if(name === 'privacy'){document.getElementById('privacy').style.display='block';}
+      if(name === 'about'){document.getElementById('about').style.display='block';}
+    }
+    function route(){
+      const h = location.hash.replace('#/','') || 'home';
+      showPage(h);
+    }
+    window.addEventListener('hashchange', route);
+    route();
+
+    // ---------- Core converter ----------
+    function convert(text, style){
+      if(!text) return '';
+      if(style === 'reverse') return text.split('').reverse().join('');
+      const lower = text.toLowerCase();
+      const map = {};
+      for(let i=0;i<abc.length;i++) map[abc[i]] = (styles[style] && styles[style][i]) ? styles[style][i] : abc[i];
+      let out='';
+      for(let ch of lower){
+        out += map[ch] || ch;
+      }
+      return out;
+    }
+
+    // elements
+    const input = document.getElementById('input');
+    const styleSelect = document.getElementById('styleSelect');
+    const output = document.getElementById('output');
+
+    function update(){
+      output.textContent = convert(input.value, styleSelect.value);
+    }
+    input.addEventListener('input', update);
+    styleSelect.addEventListener('change', update);
+    update();
+
+    // copy
+    document.getElementById('copyBtn').addEventListener('click', async()=>{
+      try{await navigator.clipboard.writeText(output.textContent);}catch(e){
+        const ta = document.createElement('textarea'); ta.value = output.textContent; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+      }
+      alert('Teks berhasil disalin!');
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', ()=>{input.value='';update();});
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{
+      const blob = new Blob([output.textContent], {type:'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href=url; a.download='textgen.txt'; a.click(); URL.revokeObjectURL(url);
+    });
+
+    // small tools
+    document.getElementById('nickGen').addEventListener('click', ()=>{
+      const v = document.getElementById('nickInput').value || 'Player';
+      const combos = ['✦','✧','★','❖','◇','•'];
+      const rnd = combos[Math.floor(Math.random()*combos.length)];
+      document.getElementById('nickOut').textContent = rnd + ' ' + v + ' ' + rnd;
+    });
+
+    document.getElementById('bioGen').addEventListener('click', ()=>{
+      const t = document.getElementById('bioTone').value;
+      let out='';
+      if(t === 'Casual') out = 'Just a simple human ✨';
+      if(t === 'Professional') out = 'Digital creator • Freelancer';
+      if(t === 'Aesthetic') out = 'chasing sunsets • making coffee ☕️';
+      document.getElementById('bioOut').textContent = out;
+    });
+
+    document.getElementById('emojiBtn').addEventListener('click', ()=>{
+      const v = document.getElementById('emojiInp').value || '✨';
+      document.getElementById('emojiOut').textContent = v.split('').join(' ');
+    });
+
+    document.getElementById('spacerBtn').addEventListener('click', ()=>{
+      const v = document.getElementById('spacerInp').value || '';
+      document.getElementById('spacerOut').textContent = v.split('').join(' ∘ ');
+    });
+
+    // theme toggle (very small)
+    const toggleTheme = document.getElementById('toggleTheme');
+    toggleTheme.addEventListener('click', ()=>{
+      document.body.classList.toggle('dark');
+      toggleTheme.textContent = document.body.classList.contains('dark') ? 'Light' : 'Dark';
+    });
+
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // SEO page link
+    document.getElementById('deployBtn').addEventListener('click', ()=>{location.hash = '#/seo'});
+
+    // Lightweight: defer heavy tasks; no external fonts to speed up
+    // === END SCRIPT ===
+  </script>
+</body>
+</html>
