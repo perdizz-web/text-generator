@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Generator</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #eee;
+      border-radius: 8px;
+      font-size: 18px;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Simple Text Generator</h1>
+
+    <textarea id="inputText" placeholder="Tulis teks di sini..."></textarea>
+
+    <button onclick="generateText()">Generate</button>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function generateText() {
+      const text = document.getElementById("inputText").value;
+      if (!text) {
+        document.getElementById("output").innerText = "Silakan masukkan teks.";
+        return;
+      }
+
+      // Contoh: ubah ke teks miring (italic unicode)
+      const italicMap = {
+        a: "𝘢", b: "𝘣", c: "𝘤", d: "𝘥", e: "𝘦", f: "𝘧", g: "𝘨",
+        h: "𝘩", i: "𝘪", j: "𝘫", k: "𝘬", l: "𝘭", m: "𝘮", n: "𝘯",
+        o: "𝘰", p: "𝘱", q: "𝘲", r: "𝘳", s: "𝘴", t: "𝘵", u: "𝘶",
+        v: "𝘷", w: "𝘸", x: "𝘹", y: "𝘺", z: "𝘻"
+      };
+
+      let result = "";
+      for (let char of text.toLowerCase()) {
+        result += italicMap[char] || char;
+      }
+
+      document.getElementById("output").innerText = result;
+    }
+  </script>
+</body>
+</html>
